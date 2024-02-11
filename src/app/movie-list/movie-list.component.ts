@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MovieListComponent implements OnInit {
   movies: any[] = []
+  errorMessage: string | null = null;
 
   @Input() movie: any;
 
@@ -42,7 +43,17 @@ export class MovieListComponent implements OnInit {
     const apiUrl = `http://www.omdbapi.com/?s=${searchText}&apikey=${apiKey}`;
 
     this.http.get(apiUrl).subscribe((data: any) => {
-      this.movies = data.Search || [];
+      if(data.Response === 'False') {
+        this.errorMessage = data.Error;
+        this.movies = [];
+      } else {
+        this.errorMessage = null;
+        this.movies = data.Search || [];
+      }
+    },
+    (error) => {
+      this.errorMessage = 'An error occured while fetching movies.';
+      this.movies = [];
     });
   }
 

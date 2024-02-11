@@ -1,11 +1,13 @@
-<label for="movie-search">Search movie:</label>
-<input id="movie-search" #search placeholder="Ex: Love">
-<button (click)="searchMovies(search.value)">Search</button>
+<div class="movie-input">
+  <label for="movie-search">Search movie:</label>
+  <input id="movie-search" #search placeholder="Ex: Love">
+  <button (click)="searchMovies(search.value)">Search</button>
+</div>
+
+<p *ngIf="errorMessage">{{ errorMessage }}</p>
 
 <article *ngIf="movies && movies.length > 0">
     <div *ngFor="let movie of movies">
       <app-movie [movie]="movie"></app-movie>
     </div>
 </article>
-  
-<p *ngIf="!movies || movies.length === 0">No movies found.</p>
