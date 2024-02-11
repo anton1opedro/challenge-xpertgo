@@ -1,0 +1,35 @@
+<h2>Formulário</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+    <div class="form-group">
+      <label for="body">Body:</label>
+      <textarea id="body" formControlName="body" rows="4"></textarea>
+      <div *ngIf="getBodyError()" class="error-message">{{ getBodyError() }}</div>
+    </div>
+  
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" id="title" formControlName="title">
+      <div *ngIf="getTitleError()" class="error-message">{{ getTitleError() }}</div>
+    </div>
+  
+    <div class="form-group">
+      <label for="publicationDate">Publication Date:</label>
+      <input type="datetime-local" id="publicationDate" formControlName="publicationDate">
+      <div *ngIf="getPublicationDateError()" class="error-message">{{ getPublicationDateError() }}</div>
+    </div>
+  
+    <div class="form-group">
+      <label for="author">Author:</label>
+      <input type="text" id="author" formControlName="author">
+      <div *ngIf="getAuthorError()" class="error-message">{{ getAuthorError() }}</div>
+    </div>
+  
+    <button type="submit">Submit</button>
+
+    <div *ngIf="submissionMessage" class="submission-message">
+        {{ submissionMessage }}
+      </div>
+      
+  </form>
+  

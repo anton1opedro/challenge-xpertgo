@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MovieAtt } from './movie-att';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'challenge-xpertgo';
+
+  movieAttList: MovieAtt[] = [
+
+  ];
 }
