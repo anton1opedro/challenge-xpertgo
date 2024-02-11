@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MovieAtt } from '../movie-att';
 
 @Component({
   selector: 'app-movie-list',
@@ -10,13 +9,9 @@ import { MovieAtt } from '../movie-att';
 export class MovieListComponent implements OnInit {
   movies: any[] = []
 
-  //@Input() movieList: MovieAtt[] = [];
-
   @Input() movie: any;
 
-  constructor(private http: HttpClient) {
-    //this.fetchMovies();
-   }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.fetchMovies();
@@ -37,7 +32,6 @@ export class MovieListComponent implements OnInit {
   }
 
   searchMovies(searchText: string): void {
-    console.log(searchText);
     const apiKey = '9c4abd13';
 
     if(!searchText) {
@@ -48,7 +42,6 @@ export class MovieListComponent implements OnInit {
     const apiUrl = `http://www.omdbapi.com/?s=${searchText}&apikey=${apiKey}`;
 
     this.http.get(apiUrl).subscribe((data: any) => {
-      console.log(data);
       this.movies = data.Search || [];
     });
   }
