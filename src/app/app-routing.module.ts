@@ -1,36 +1,14 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { MovieListComponent } from './movie-list/movie-list.component';
-import { FormComponent } from './form/form.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
-  { path: '', component: MovieListComponent },
-  { path: 'form', component: FormComponent },
-];
+  {path: '', loadChildren: () => import('./movie-list/movie-list.module').then(m => m.MovieListModule) },
+  {path: 'form', loadChildren: () => import('./form/form.module').then(m => m.FormModule) },
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
-
-// import { NgModule } from '@angular/core';
-// import { RouterModule, Routes } from '@angular/router';
-
-// const routes: Routes = [
-//   {
-//     path: '',
-//     loadChildren: () => import('./movie-list.module').then((m) => m.MovieListModule),
-//   },
-//   {
-//     path: 'form',
-//     loadChildren: () => import('./form.module').then((m) => m.FormModule),
-//   },
-// ];
-
-// @NgModule({
-//   imports: [RouterModule.forRoot(routes)],
-//   exports: [RouterModule],
-// })
-// export class AppRoutingModule {}
+export class AppRoutingModule {}
 
