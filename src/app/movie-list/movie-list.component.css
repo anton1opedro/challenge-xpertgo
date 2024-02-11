@@ -12,6 +12,7 @@ input {
     color: #888c9c;
     border: solid 1px #888c9c;
     padding: 0 5px 0 10px;
+    margin-left: 10px;
 }
 
 button {
@@ -46,4 +47,5 @@ label {
     display: block;
     color: #424249;
     margin-top: 20px;
+    margin-left: 10px;
 }
